@@ -11,7 +11,9 @@ const Shop = () => {
       .catch((err) => console.log(err));
   }, []);
 
- 
+  const addToCartHandel = (id) => {
+    console.log(id);
+  };
   return (
     <div className='shop-container'>
       <div className='product-container'>
@@ -19,7 +21,9 @@ const Shop = () => {
                   products.map((product) => (
                       <Product
                           key={product.id}
-                          product={product}>                        
+                      product={product}
+                      clickHandel={addToCartHandel}
+                    >                        
                       </Product>
                   ))
               }
