@@ -11,8 +11,14 @@ const Shop = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const addToCartHandel = (id) => {
-    console.log(id);
+
+  const [cart, setCart] = useState([]);
+  
+  const addToCartHandel = (product) => {
+    console.log(product);
+    let newCart = [...cart, product];
+    setCart(newCart);
+
   };
   return (
     <div className='shop-container'>
@@ -28,7 +34,10 @@ const Shop = () => {
                   ))
               }
       </div>
-      <div>order</div>
+      <div>
+        <h2>Order Summary</h2>
+        <p>Selected Items : {cart.length}</p>
+      </div>
     </div>
   );
 };
