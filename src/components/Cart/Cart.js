@@ -5,18 +5,21 @@ import "./Cart.css";
 
 
 const Cart = ({ cart }) => {
+ 
   let total = 0;
   let shipping = 0;
+  let quantity = 0;
   for (const product of cart) {
-    total = total + product.price;
+    total = total + product.price * product.quantity;
     shipping = shipping + product.shipping;
+    quantity = quantity + product.quantity;
   }
   let tax = (total * 0.1).toFixed(2);
   let grandTotal = total + shipping + (+tax);
   return (
     <div className='cart'>
       <h5>Order Summary</h5>
-      <p>Selected Items : {cart.length}</p>
+      <p>Selected Items : {quantity}</p>
       <p>Total Price: ${total}</p>
       <p>Shipping cost: ${shipping}</p>
       <p>Tax: ${tax}</p>

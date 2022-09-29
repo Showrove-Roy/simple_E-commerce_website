@@ -16,10 +16,19 @@ const Shop = () => {
 
   const [cart, setCart] = useState([]);
 
-  const addToCartHandel = (product) => {
-    let newCart = [...cart, product];
+  const addToCartHandel = (selectedProduct) => {
+    let newCart = [];
+    let exists = cart.find(product => product.id === selectedProduct.id);
+    if (!exists) {
+      selectedProduct.quantity = 1;
+      newCart = [...cart, selectedProduct];
+    } else {
+      let rest = cart.filter(product => product.id !== selectedProduct.id);
+      exists.quantity = exists.quantity + 1;
+      newCart=[...rest, exists];
+    }
     setCart(newCart);
-    addCartToDB(product.id);
+    addCartToDB(selectedProduct.id);
 
   };
 
