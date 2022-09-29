@@ -1,6 +1,6 @@
 // set shopping cart information to the local storage
 const addCartToDB = (id) => {
-  let shoppingCart = shoppingcart();
+  let shoppingCart = getShoppingCart();
 
   // check product quantity and set value
   let quantity = shoppingCart[id];
@@ -16,7 +16,7 @@ const addCartToDB = (id) => {
 };
 
 // get shopping cart
-const shoppingcart = () => {
+const getShoppingCart = () => {
   // create empty shopping cart
   let shoppingCart = {};
 
@@ -48,4 +48,4 @@ const clearCart = () => {
   localStorage.clear("shoppingCart");
 };
 
-export { addCartToDB, removeFromCart, clearCart };
+export { addCartToDB, removeFromCart, clearCart, getShoppingCart};
