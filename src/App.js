@@ -3,28 +3,26 @@ import "./App.css";
 import Order from "./components/Order/Order";
 import Shop from "./components/Shop/Shop";
 import Main from "./Layout/Main";
-
+import { loadProduct_cart } from "./Loader/loadProduct_cart";
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <Main></Main>,
       children: [
         {
-          path: '/',
-        element: <Shop></Shop>
+          path: "/",
+          loader: () => fetch("products.json"),
+          element: <Shop></Shop>,
         },
         {
-           path: 'shop',
-        element: <Shop></Shop>
+          path: "order",
+          loader: loadProduct_cart,
+          element: <Order></Order>,
         },
-        {
-          path: 'order',
-          element: <Order></Order>
-        }
-      ]
-    }
+      ],
+    },
   ]);
   return (
     <div>

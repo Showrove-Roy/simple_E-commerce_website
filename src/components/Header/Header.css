@@ -16,8 +16,8 @@
   text-transform: uppercase;
 }
 .nav-items a:hover {
-  background-color:  tomato;
-}
-.active{
   background-color: tomato;
 }
+/* .active{
+  background-color: tomato;
+} */
