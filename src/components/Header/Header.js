@@ -1,16 +1,33 @@
 import React from "react";
 import "./Header.css";
 import logo from "../../images/Logo.svg";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav className="header">
+    <nav className='header'>
       <img src={logo} alt='' />
-      <div className="nav-items">
-        <a href='/shop'>Shop</a>
-        <a href='/order'>Order</a>
-        <a href='/inventory'>Inventory</a>
-        <a href='/about'>About</a>
+      <div className='nav-items'>
+        <NavLink
+          to='/'
+          className={({ isActive }) => (isActive ? "active" : undefined)}>
+          Shop
+        </NavLink>
+        <NavLink
+          to='/order'
+          className={({ isActive }) => (isActive ? "active" : undefined)}>
+          Order
+        </NavLink>
+        <NavLink
+          to='/inventory'
+          className={({ isActive }) => (isActive ? "active" : undefined)}>
+          Inventory
+        </NavLink>
+        <NavLink
+          to='/about'
+          className={({ isActive }) => (isActive ? "active" : undefined)}>
+          About
+        </NavLink>
       </div>
     </nav>
   );

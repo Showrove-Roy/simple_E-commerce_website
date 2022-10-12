@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Cart.css";
 
-
 const Cart = ({ cart }) => {
- 
+    const clearCart = () => {
+  };
   let total = 0;
   let shipping = 0;
   let quantity = 0;
@@ -15,7 +15,8 @@ const Cart = ({ cart }) => {
     quantity = quantity + product.quantity;
   }
   let tax = (total * 0.1).toFixed(2);
-  let grandTotal = total + shipping + (+tax);
+  let grandTotal = total + shipping + +tax;
+
   return (
     <div className='cart'>
       <h5>Order Summary</h5>
@@ -25,7 +26,7 @@ const Cart = ({ cart }) => {
       <p>Tax: ${tax}</p>
       <h6>Grand Total: ${grandTotal}</h6>
 
-      <button className='btn-clear-cart'>
+      <button onClick={clearCart} className='btn-clear-cart'>
         Clear Cart
         <FontAwesomeIcon
           style={{ marginLeft: "8px" }}
