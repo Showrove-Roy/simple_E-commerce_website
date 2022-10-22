@@ -1,7 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
+import Login from "./components/Login/Login";
 import Order from "./components/Order/Order";
 import Shop from "./components/Shop/Shop";
+import SignUp from "./components/Sign Up/SignUp";
 import Main from "./Layout/Main";
 import { loadProduct_cart } from "./Loader/loadProduct_cart";
 
@@ -20,6 +22,14 @@ function App() {
           path: "order",
           loader: loadProduct_cart,
           element: <Order></Order>,
+        },
+        {
+          path: "/login",
+          element: <Login></Login>,
+        },
+        {
+          path: "/signup",
+          element: <SignUp></SignUp>,
         },
         {
           path: "*",

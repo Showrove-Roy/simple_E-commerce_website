@@ -28,6 +28,16 @@ const Header = () => {
           className={({ isActive }) => (isActive ? "active" : undefined)}>
           About
         </NavLink>
+        <NavLink
+          to='/login'
+          className={({ isActive }) => (isActive ? "active" : undefined)}>
+          Login
+        </NavLink>
+        <NavLink
+          to='/signup'
+          className={({ isActive }) => (isActive ? "active" : undefined)}>
+          SignUP
+        </NavLink>
       </div>
     </nav>
   );
