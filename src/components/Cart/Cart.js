@@ -1,6 +1,8 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../constexts/UserContext";
 import "./Cart.css";
 
 const Cart = ({ cart, clearCartHandel, children }) => {
@@ -15,8 +17,11 @@ const Cart = ({ cart, clearCartHandel, children }) => {
   let tax = (total * 0.1).toFixed(2);
   let grandTotal = total + shipping + +tax;
 
+  const { user } = useContext(AuthContext);
+
   return (
     <div className='cart'>
+      {user?.uid && <p>{user?.email}</p>}
       <h5>Order Summary</h5>
       <p>Selected Items : {quantity}</p>
       <p>Total Price: ${total}</p>

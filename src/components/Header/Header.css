@@ -9,7 +9,8 @@
   top: 0;
   z-index: 111;
 }
-.nav-items a {
+.nav-items a,
+.btn-logOut {
   text-decoration: none;
   color: #ffffff;
   font-size: 1rem;
@@ -18,9 +19,16 @@
   padding: 5px 15px;
   text-transform: uppercase;
 }
-.nav-items a:hover {
+.nav-items a:hover,
+.btn-logOut:hover {
   background-color: tomato;
 }
-/* .active{
+/* .active {
   background-color: tomato;
 } */
+.btn-logOut {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px 15px;
+}

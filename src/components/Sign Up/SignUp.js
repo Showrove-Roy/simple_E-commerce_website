@@ -1,12 +1,16 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../constexts/UserContext";
 import "./SignUp.css";
 
 const SignUp = () => {
   const [errorMess, setErrorMess] = useState(null);
+  const { createUser } = useContext(AuthContext);
   const handelSubmit = (event) => {
     event.preventDefault();
+    setErrorMess(null);
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -20,6 +24,18 @@ const SignUp = () => {
       return;
     }
     console.log(email, password, confirmPassword);
+
+    // create user
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+        const errorMessage = error.message;
+        setErrorMess(errorMessage);
+      });
 
     form.reset();
   };
