@@ -1,13 +1,16 @@
 import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../constexts/UserContext";
 import "./SignUp.css";
 
 const SignUp = () => {
   const [errorMess, setErrorMess] = useState(null);
   const { createUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   const handelSubmit = (event) => {
     event.preventDefault();
     setErrorMess(null);
@@ -30,6 +33,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);

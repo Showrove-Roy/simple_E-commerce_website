@@ -28,15 +28,17 @@ const Cart = ({ cart, clearCartHandel, children }) => {
       <p>Shipping cost: ${shipping}</p>
       <p>Tax: ${tax}</p>
       <h6>Grand Total: ${grandTotal}</h6>
+      {quantity !== 0 && (
+        <button onClick={clearCartHandel} className='btn-clear-cart'>
+          Clear Cart
+          <FontAwesomeIcon
+            style={{ marginLeft: "8px" }}
+            icon={faTrash}></FontAwesomeIcon>
+        </button>
+      )}
 
-      <button onClick={clearCartHandel} className='btn-clear-cart'>
-        Clear Cart
-        <FontAwesomeIcon
-          style={{ marginLeft: "8px" }}
-          icon={faTrash}></FontAwesomeIcon>
-      </button>
       <br />
-      {children}
+      {quantity !== 0 && children}
     </div>
   );
 };

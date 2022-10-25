@@ -2,10 +2,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login/Login";
 import Order from "./components/Order/Order";
+import Shipping from "./components/Shipping/Shipping";
 import Shop from "./components/Shop/Shop";
 import SignUp from "./components/Sign Up/SignUp";
 import Main from "./Layout/Main";
 import { loadProduct_cart } from "./Loader/loadProduct_cart";
+import PrivateRouter from "./Router/PrivateRouter";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +24,15 @@ function App() {
           path: "order",
           loader: loadProduct_cart,
           element: <Order></Order>,
+        },
+        {
+          path: "shipping",
+          loader: loadProduct_cart,
+          element: (
+            <PrivateRouter>
+              <Shipping></Shipping>
+            </PrivateRouter>
+          ),
         },
         {
           path: "/login",

@@ -21,18 +21,24 @@ const UserContext = ({ children }) => {
   // User data storage
   const [user, setUser] = useState(null);
 
+  // Loading system
+  const [loading, setLoading] = useState(true);
+
   // create user function
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // user sign in function
   const signIN = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // User sign out
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -40,11 +46,12 @@ const UserContext = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);
 
-  const authInfo = { user, createUser, signIN, logOut };
+  const authInfo = { user, createUser, signIN, logOut, loading };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
